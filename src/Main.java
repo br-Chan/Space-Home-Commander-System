@@ -1,11 +1,14 @@
+import exceptions.DeviceAlreadyOnException;
+import exceptions.DeviceNotFoundException;
+
 public class Main {
     public static void main(String[] args) {
         SmartHomeAutomationSystem system = new SmartHomeAutomationSystem();
 
-        system.addDevice("Light", "Lighting");
-        system.addDevice("Fan", "Appliance");
-        system.addDevice("Heater", "Heating");
-        system.addDevice("AC", "Cooling");
+        system.addDevice("Light");
+        system.addDevice("Fan");
+        system.addDevice("Heater");
+        system.addDevice("AC");
 
         try {
             system.connectDevices("Light", "Fan");

@@ -18,6 +18,7 @@ public class Device {
     }
 
     public void turnOn() {
+
         isOn = true;
         System.out.println(name + " is on");
     }
