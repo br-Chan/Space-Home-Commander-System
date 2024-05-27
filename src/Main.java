@@ -1,9 +1,9 @@
-import exceptions.DeviceAlreadyOnException;
+import exceptions.EmptyNameException;
 import exceptions.DeviceNotFoundException;
 
 public class Main {
     public static void main(String[] args) {
-        SmartHomeAutomationSystem system = new SmartHomeAutomationSystem();
+        SpaceHomeCommanderSystem system = new SpaceHomeCommanderSystem();
 
         system.addDevice("Light");
         system.addDevice("Fan");
@@ -26,7 +26,7 @@ public class Main {
             System.out.println("DFS traversal from Light:");
             system.showDFS("Light");
 
-        } catch (DeviceNotFoundException | DeviceAlreadyOnException e) {
+        } catch (DeviceNotFoundException | EmptyNameException e) {
             System.out.println(e.getMessage());
         }
     }
