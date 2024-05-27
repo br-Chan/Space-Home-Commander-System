@@ -20,13 +20,13 @@ public class Main {
             system.undoLastCommand();
             system.turnOffDevice("Light");
 
-            System.out.println("BFS traversal from Light:");
-            system.showBFS("Light");
+            // System.out.println("BFS traversal from Light:");
+            // system.showBFS("Light");
 
-            System.out.println("DFS traversal from Light:");
-            system.showDFS("Light");
+            // System.out.println("DFS traversal from Light:");
+            // system.showDFS("Light");
 
-        } catch (DeviceNotFoundException | EmptyNameException e) {
+        } catch (EmptyNameException e) {
             System.out.println(e.getMessage());
         }
     }
