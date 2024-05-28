@@ -46,6 +46,7 @@ public class SpaceHomeCommanderSystem {
 
     public void addDevice(String name) {
         network.addNode(new Device(name));
+        System.out.println(name + " added!");
     }
 
     public void connectDevices(String name1, String name2) {
@@ -55,20 +56,27 @@ public class SpaceHomeCommanderSystem {
             device1 = getDeviceByName(name1);
             device2 = getDeviceByName(name2);
         } catch (DeviceNotFoundException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Cancelling connect request...");
+            System.out.println("Error: " + e.getMessage() + ", cancelling connect request.");
             return;
         }
-        
+    
         network.addEdge(device1, device2);
+        System.out.println(device1.getName() + " and " + device2.getName() + " connected!");
 
     }
 
     public void addCommand(Command command) {
         commandQueue.add(command);
+        System.out.println("Command added!");
     }
 
+    // TODO: could make addCommand(String deviceName String commandName)
+    // then can remove try-catch in Main class because they're here instead
+
+    // TODO: could add functionality where all connected devices turn on
+
     public void executeCommand(Command command) {
+        System.out.print("Exec: ");
         command.execute();
         commandHistory.push(command);
     }
@@ -78,12 +86,15 @@ public class SpaceHomeCommanderSystem {
     }
 
     public void executeAll() {
+        System.out.println("EXEC: entire queue...");
+
         while(!commandQueue.isEmpty()) {
             executeFirst();
         }
     }
 
     public void undoLast() {
+        System.out.print("Undo: ");
         Command command = commandHistory.pop();
         command.undo();
     }
