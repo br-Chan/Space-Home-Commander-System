@@ -11,6 +11,10 @@ public class Graph<T> {
         adjacencyMap = new HashMap<>();
     }
 
+    public Map<T, List<T>> getAdjacencyMap() {
+        return adjacencyMap;
+    }
+
     public void addNode(T node) {
         adjacencyMap.putIfAbsent(node, new ArrayList<>());
     }

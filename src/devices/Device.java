@@ -30,7 +30,8 @@ public class Device {
 
     @Override
     public String toString() {
-        return "Device [name=" + name + ", isOn=" + isOn + "]";
+        String onOrOff = isOn ? "on" : "off";
+        return name + " (" + onOrOff + ")";
     }
 
     @Override

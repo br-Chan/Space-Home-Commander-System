@@ -12,11 +12,20 @@ public class Main {
         system.addDevice("MeteorShield");
         system.addDevice("NanoCoolant");
         system.addDevice("AC");
+        system.addDevice("BlastDoors");
+        system.addDevice("AlienTranslator");
+        system.addDevice("SmartWatch");
 
         System.out.println("===CONNECTING_DEVICES===");
         system.connectDevices("Lamp", "MeteorShield");
+        system.connectDevices("Lamp", "BlastDoors");
         system.connectDevices("MeteorShield", "NanoCoolant");
-        system.connectDevices("NanoCoolant", "PeanutBar");
+        system.connectDevices("MeteorShield", "BlastDoors");
+        system.connectDevices("NanoCoolant", "AC");
+        system.connectDevices("SmartWatch", "AlienTranslator");
+        system.connectDevices("SmartWatch", "BlastDoors");
+        system.connectDevices("SmartWatch", "AC");
+        system.connectDevices("SmartWatch", "MeteorShield");
 
         System.out.println("===ADDING_EXECUTING_COMMANDS===");
         try {
@@ -34,18 +43,17 @@ public class Main {
         system.undoLast();
 
         try {
-            system.addCommand(new TurnOffCommand(system.getDeviceByName("Lampe")));
+            system.addCommand(new TurnOffCommand(system.getDeviceByName("Lamp")));
         } catch (DeviceNotFoundException e) {
             System.out.println(e.getMessage() + ", command not executed.");
         }
 
         system.executeAll();
 
-            // System.out.println("BFS traversal from Light:");
-            // system.showBFS("Light");
+        system.showBFS("Lamp");
+        system.showDFS("Lamp");
 
-            // System.out.println("DFS traversal from Light:");
-            // system.showDFS("Light");
+        system.showBFS("SmartWatch");
 
         // } catch (EmptyNameException e) {
         //     System.out.println(e.getMessage());
